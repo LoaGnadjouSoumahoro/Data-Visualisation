@@ -1,9 +1,58 @@
-// /* Insertion du graphique au-dessus du tableau 1 */
+// Création du canvas pour Chart3
+const canvasH1 = document.createElement('canvas');
+canvasH1.id = 'ChartH1';
+const ctxH1 = canvasH1.getContext('2d');
+const heading1 = document.getElementById('firstHeading');
+heading1.parentNode.insertBefore(canvasH1, heading1);
+
+// Initialisation des données pour ChartH1
+let dataPointsH1 = [];
+let chartH1 = new Chart(ctxH1, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Data Points',
+            data: dataPointsH1,
+            fill: false,
+            borderColor: 'black',
+            tension: 0.1
+        }]
+    },
+});
+
+// Fonction pour récupérer les données JSON via Ajax et les afficher pour ChartH1
+function fetchDataH1() {
+    let url = "https://canvasjs.com/services/data/datapoints.php?xstart=" + (dataPointsH1.length + 1) + "&ystart=" + (dataPointsH1[dataPointsH1.length - 1]) + "&length=1&type=json";
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length > 0) {
+                dataPointsH1.push(data[0][1]);
+                chartH1.data.labels.push(data[0][0]);
+                chartH1.update();
+            }
+            console.log(dataPointsH1);
+        })
+        .catch(error => console.error("Error fetching data: " + error));
+
+    setTimeout(fetchDataH1, 1000);
+}
+
+// Appeler la fonction pour récupérer et afficher les données pour ChartH1
+fetchDataH1();
+
+
+
+
+// /* Insertion du graphique au-dessus  */
 const table1 = document.querySelector('#table1');
 const parentTables = document.getElementById('mw-content-text');
 const canvasTable1 = document.createElement('canvas');
 canvasTable1.setAttribute("id", "idCanvas1");
 parentTables.insertBefore(canvasTable1, table1);
+
 
 
 
@@ -74,17 +123,12 @@ const tableFunction2 = ()=>{
   let countries = [];
   let years = [];
   let dataDigits = [];
-
   const topTable2 = table2.rows[0];
-
-
 
   for(let i = 2; i< topTable2.cells.length; i++){
     years.push(topTable2.cells[i].textContent);
 
   }
-
-
 
   for(let i = 1; i< table2.rows.length; i++){
     const row = table2.rows[i];
@@ -121,91 +165,11 @@ const tableFunction2 = ()=>{
       }
     });
 }
+// Appeler la fonction une première fois pour afficher le graphique initial
+
+
+
 tableFunction1();
 tableFunction2();
+updateCanvasH1Chart();
 
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-// console.log(canvasTable1);
-
-
-
-/*  Insertion du graphe au dessus du tableau 1 End*/ 
-
-
-
-// Insérer le graphique sous la balise h4
-
-
-
-
-
-// // firstHeading
-
-// Récupérez le tableau HTML
-// const table = document.getElementById('table2');
-
-// // Récupérez les données du tableau
-// const labels = [];
-// const data2007_09 = [];
-// const data2010_12 = [];
-
-// const rows = table.querySelectorAll('tbody tr');
-// rows.forEach(row => {
-//   const cells = row.querySelectorAll('td');
-//   if (cells.length === 3) {
-//     labels.push(cells[1].textContent);
-//     data2007_09.push(parseInt(cells[2].textContent, 10));
-//     data2010_12.push(parseInt(cells[3].textContent, 10));
-//   }
-// });
-
-// // Créez le graphique à barres
-// const ctx = document.getElementById('myChart').getContext('2d');
-// const myChart = new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: labels,
-//     datasets: [
-//       {
-//         label: '2007-09',
-//         data: data2007_09,
-//         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//         borderColor: 'rgba(75, 192, 192, 1)',
-//         borderWidth: 1,
-//       },
-//       {
-//         label: '2010-12',
-//         data: data2010_12,
-//         backgroundColor: 'rgba(255, 99, 132, 0.2)',
-//         borderColor: 'rgba(255, 99, 132, 1)',
-//         borderWidth: 1,
-//       },
-//     ],
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true,
-//       },
-//     },
-//   },
-// });
