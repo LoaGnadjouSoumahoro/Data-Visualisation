@@ -1,14 +1,27 @@
-# JavaScript Challenge : "Data Visualisation"
+# 📊 JavaScript Challenge : "Data Visualisation"
 ## Description
 
-Le projet Data Visualisation consiste à insérer 2 graphiques de données  internes et 1 graphique de données distants.
+Le projet Data Visualisation consiste à insérer 1 graphique de données distants et 2 graphiques de données  internes en Javascript sans ajout de balise dans le HTML. 
 
-+ 2 Graphques de données intermes
-Est une représentations sous forme graphique interactif des données de 2 tableaux se trouvant sur la pages web. ILS sont insérées au-dessus de chacun 
-entre le titre et le tableau.
 
-+ Le graphique des données distants
-Représente des données se trouvant à cette URL : [link"](https://canvasjs.com/services/data/datapoints.php). Les données sont récupérer AJAX. Le graphique se rafraichit toutes les sécondes. Et se trouve en dessous du titre principale de l'article.
++ Graphique des données distants
+
+![Graphique de données distants](images/graphiqueDynamique.png "Graphique de données distantes")
+
+
+Représente des données se trouvant à cette URL : [link](https://canvasjs.com/services/data/datapoints.php). Les données sont récupérer via AJAX et se rafraichit toutes les sécondes. Il se trouve en dessous du titre principale de l'article.
+
++ 2 Graphiques de données internes
+
+![Graphique des données du tableau 1](images/graphiqueTableau1.png "Graphique des données du tableau 1")
+Graphique du tableau 1
+
+![Graphique des données du tableau 2](images/graphiqueTableau2.png "Graphique des données du tableau 2")
+Graphique du tableau 2
+
+Ils sont les représentations des données des tableaux 1 et 2 se trouvant sur la pages web. Ils ont insérées au-dessus de chacuns des tableauX.
+
+
 
 Ces graphique n'apparaissent uniquement quand Javascript est activé.
 
@@ -20,3 +33,4 @@ Ces graphique n'apparaissent uniquement quand Javascript est activé.
 + Forma de donnée en ``JSON``
 
 
+![Simpson graphique](images/graphique.gif)
